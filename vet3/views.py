@@ -20,4 +20,5 @@ def appointment_view(request):
     return render(request, 'appointment.html', {'form': form})
 
 def appointment_success(request):
+
     return render(request, 'appointment_success.html')
