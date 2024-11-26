@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title %}Воронежская Ветклиника{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <h2>Добро пожаловать в Воронежскую Ветклинику!</h2>
+        <p>Наши высококвалифицированные специалисты и современное оборудование гарантируют лучший уход за вашими
+            питомцами.</p>
+        <h3>Адрес:</h3>
+        <p>г. Воронеж, ул. Переверткина 31А</p>
+        <!-- Вставьте сюда HTML код Google Maps -->
+        <div class="map">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.654012792391!2d39.20074851580638!3d51.66078167965762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412b2b91bbdc5c97%3A0x8ab001c5daac600!2z0YPQuy4g0J_QvtC70YzRiNC-0L3RgdC60LDRjyDRg9C7Liwg0JLQvtGA0L7RgdC40Y8s INCg0LXRgNC10L3RgtGA!5e0!3m2!1sru!2sru!4v1640984019981"
+                    width="600"
+                    height="450"
+                    frameborder="0"
+                    style="border:0;"
+                    allowfullscreen=""
+                    aria-hidden="false"
+                    tabindex="0">
+            </iframe>
+        </div>
+    </div>
+{% endblock %}

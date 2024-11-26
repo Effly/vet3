@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="appointment-container">
+    <h2>Онлайн запись к врачу</h2>
+    <p>Пожалуйста, заполните форму ниже, чтобы записаться на прием к ветеринару.</p>
+    <form action="{% url 'appointment' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="ownerName">Имя владельца:</label>
+            {{ form.owner_name }}
+        </div>
+        <div class="form-group">
+            <label for="petName">Имя питомца:</label>
+            {{ form.pet_name }}
+        </div>
+        <div class="form-group">
+            <label for="petType">Тип питомца:</label>
+            {{ form.pet_type }}
+        </div>
+        <div class="form-group">
+            <label for="service">Тип услуги:</label>
+            {{ form.service }}
+        </div>
+        <div class="form-group">
+            <label for="date">Дата:</label>
+            {{ form.date }}
+        </div>
+        <div class="form-group">
+            <label for="time">Время:</label>
+            {{ form.time }}
+        </div>
+        <button type="submit" class="btn btn-primary">Записаться</button>
+    </form>
+</div>
+{% endblock %}
