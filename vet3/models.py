@@ -1,3 +1,5 @@
+# vet3/models.py
+
 from django.db import models
 
 class Appointment(models.Model):
@@ -20,6 +22,9 @@ class Appointment(models.Model):
     service = models.CharField(max_length=20, choices=SERVICE_CHOICES)
     date = models.DateField()
     time = models.TimeField()
+
+    class Meta:
+        unique_together = ('date', 'time')
 
     def __str__(self):
         return f"{self.owner_name} - {self.pet_name} ({self.pet_type})"

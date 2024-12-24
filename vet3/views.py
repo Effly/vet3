@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from .forms import AppointmentForm
 def home(request):
@@ -13,8 +14,11 @@ def appointment_view(request):
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('appointment_success')
+            try:
+                form.save()
+                return redirect('appointment_success')
+            except IntegrityError:
+                form.add_error('error', 'Данное время уже занято. Пожалуйста, выберите другое время.')
     else:
         form = AppointmentForm()
     return render(request, 'appointment.html', {'form': form})
