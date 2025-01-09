@@ -3,7 +3,6 @@ from .forms import AppointmentForm
 from django.shortcuts import render, redirect
 from datetime import timedelta, datetime
 from .models import Appointment
-import pprint
 
 
 def home(request):
@@ -25,15 +24,12 @@ def appointment_view(request):
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
 
-            # Получаем последнюю запись с тем же service
-            last_appointment = Appointment.objects.filter(service=service).order_by('-date', '-time').first()
-            pp.pprint(last_appointment)
+            last_appointment = Appointment.objects.filter(service=service).order_by('-id').first()
+
             if last_appointment:
                 last_datetime = datetime.combine(last_appointment.date, last_appointment.time)
                 new_datetime = datetime.combine(date, time)
-                pp.pprint((new_datetime - last_datetime).total_seconds())
-                # Проверяем разницу во времени
-                if abs((new_datetime - last_datetime).total_seconds()) < 600:  # 600 секунд = 10 минут
+                if abs((new_datetime - last_datetime).total_seconds()) <= 600:
                     form.add_error(None, 'Разница между временем этой записи и последней записи менее 10 минут. Пожалуйста, выберите другое время.')
                     return render(request, 'appointment.html', {'form': form})
 
