@@ -9,7 +9,8 @@
         {% if form.non_field_errors %}
             <div class="alert alert-danger">
                 {% for error in form.non_field_errors %}
-                    <p style="color: red"> Данная дата и время уже занято </p>
+
+                    <p style="color: red"> {{ error }} </p>
                 {% endfor %}
             </div>
         {% endif %}
